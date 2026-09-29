@@ -1,36 +1,41 @@
 import Image from 'next/image';
 import { asset } from '@/lib/asset';
 import LineReveal from './LineReveal';
-import Reveal from './Reveal';
 
 const items = [
-  { img: '/img/zeelool-glasses-kJy7MMIfcNU.webp', name: 'Samuel Mitchell', role: 'Restaurant Owner',
-    quote: 'Straightforward and supportive. Working together turned numbers into an actionable plan I could trust.' },
-  { img: '/img/allyssa-sayers-w2Qx9eaA3I0.webp', name: 'Marissa Lawson', role: 'CCO, Nectar Media',
-    quote: 'Clear, practical advice that actually made sense. Exactly the guidance I received helped me move forward with confidence.' },
-  { img: '/img/testimonial-man.webp', name: 'Gabriel Roberts', role: 'Marketing Director',
+  { img: '/img/testimonial-man.webp', name: 'Gabriel Roberts', role: 'Marketing Director', rot: -2,
     quote: 'Professional, reliable, and easy to understand — Jonathan gave me the clarity I needed to plan my finances.' },
+  { img: '/img/allyssa-sayers-w2Qx9eaA3I0.webp', name: 'Marissa Lawson', role: 'CCO, Nectar Media', rot: 1.5,
+    quote: 'Clear, practical advice that actually made sense. Exactly the guidance I received helped me move forward with confidence.' },
+  { img: '/img/zeelool-glasses-kJy7MMIfcNU.webp', name: 'Samuel Mitchell', role: 'Restaurant Owner', rot: -1,
+    quote: 'Straightforward and supportive. Working together turned numbers into an actionable plan I could trust.' },
 ];
 
+// Yorum kartları sticky ile hafif eğik bir deste gibi üst üste biner.
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="mx-auto max-w-7xl px-6 py-24">
-      <p className="eyebrow">Testimonials</p>
-      <LineReveal as="h2" text="They love us" className="mt-3 text-4xl font-semibold tracking-tight sm:text-6xl" />
-      <div className="mt-14 grid gap-6 md:grid-cols-3">
+    <section id="testimonials" className="px-4 py-20 md:px-6 md:py-28">
+      <p className="eyebrow text-center">Testimonials</p>
+      <LineReveal as="h2" text="They love us" className="mt-3 text-center text-3xl font-light tracking-tight md:text-6xl" />
+      <div className="mx-auto mt-12 max-w-md md:max-w-xl">
         {items.map((t, i) => (
-          <Reveal key={t.name} delay={i * 120} className="flex">
-          <figure className="flex w-full flex-col rounded-2xl bg-neutral-100 p-8">
-            <blockquote className="flex-1 text-xl leading-snug">“{t.quote}”</blockquote>
-            <figcaption className="mt-8 flex items-center gap-4">
-              <Image src={asset(t.img)} alt={t.name} width={56} height={56} className="size-14 rounded-full object-cover" />
-              <div>
-                <p className="font-semibold">{t.name}</p>
+          <figure
+            key={t.name}
+            className="sticky mb-[10vh] flex min-h-[21rem] flex-col justify-between rounded-3xl bg-neutral-200 p-7 shadow-[0_10px_40px_rgba(0,0,0,0.08)]"
+            style={{ top: `calc(6rem + ${i} * 1rem)`, transform: `rotate(${t.rot}deg)` }}
+          >
+            <div className="flex items-start justify-between">
+              <span className="text-7xl font-light leading-none" aria-hidden="true">{t.name[0]}</span>
+              <Image src={asset(t.img)} alt={t.name} width={64} height={64} className="size-14 rounded-2xl object-cover" />
+            </div>
+            <div>
+              <blockquote className="text-lg font-light leading-snug">“{t.quote}”</blockquote>
+              <figcaption className="mt-6">
+                <p className="text-sm font-medium">{t.name}</p>
                 <p className="text-sm opacity-60">{t.role}</p>
-              </div>
-            </figcaption>
+              </figcaption>
+            </div>
           </figure>
-          </Reveal>
         ))}
       </div>
     </section>

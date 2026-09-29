@@ -3,7 +3,7 @@ import Hero from '@/components/Hero';
 import Marquee from '@/components/Marquee';
 import About from '@/components/About';
 import Services from '@/components/Services';
-import HorizontalScroll from '@/components/HorizontalScroll';
+import Points from '@/components/Points';
 import Stats from '@/components/Stats';
 import Testimonials from '@/components/Testimonials';
 import Pricing from '@/components/Pricing';
@@ -20,7 +20,7 @@ export default function Home() {
         <Marquee />
         <About />
         <Services />
-        <HorizontalScroll />
+        <Points />
         <Stats />
         <Testimonials />
         <Pricing />
