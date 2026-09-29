@@ -36,6 +36,12 @@ npm run lint     # tsc --noEmit
   - tanımlı değilse e-posta uygulaması hazır mesajla açılır (`mailto:`).
 - Metinler ve alanlar `lib/content.ts` içindeki `contact` bölümündedir.
 
+## Sayfa geçişi
+
+Ana sayfa ↔ İletişim arasında orijinal temadaki gibi tarayıcının **View Transition**'ı çalışır: yeni sayfa sağdan sola yumuşak kenarlı bir wipe ile açılır (1.2 sn), üstüne hafif blur eklendi.
+Ayarlar `app/globals.css` içindeki "Sayfa geçişi" bölümündedir. Bunun çalışması için sayfalar arası bağlantılar bilerek tam sayfa gezinmesidir (`components/SmartLink.tsx`); `next/link` kullanılmaz.
+Chrome/Edge ve Safari 18.2+ animasyonu gösterir, desteklemeyen tarayıcılarda geçiş anlık olur. `prefers-reduced-motion` açıksa animasyon kapanır.
+
 ## Duyarlı ölçekleme
 
 Masaüstünde (≥1000px) yazı boyutları `(genişlik + 160) / 1600` katsayısıyla ölçeklenir, tablette (691–999px) ve telefonda (≤690px) sabittir.

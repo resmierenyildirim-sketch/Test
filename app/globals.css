@@ -628,6 +628,26 @@ body[data-menu="open"] .ocm-panel nav a { opacity: 1; transform: none; transitio
   .ct-photo blockquote { font-size: 18px; }
 }
 
+/* =====================================================================
+   Sayfa geçişi — orijinal temadaki gibi tarayıcının View Transition'ı:
+   yeni sayfa sağdan sola yumuşak kenarlı bir "wipe" ile açılır (1.2s, aynı eğri);
+   üstüne hafif blur eklendi (eski sayfa bulanıklaşır, yenisi bulanıktan netleşir).
+   Ana sayfa <-> İletişim arasında iki yönde de çalışır; desteklemeyen tarayıcıda normal geçiş olur.
+   ===================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  @property --pt-wipe { syntax: "<number>"; initial-value: 0; inherits: false; }
+  @keyframes pt-old { from { filter: blur(0px); } to { filter: blur(6px); } }
+  @keyframes pt-new { from { --pt-wipe: 0; filter: blur(14px); } to { --pt-wipe: 1; filter: blur(0px); } }
+  ::view-transition-old(*), ::view-transition-new(*) { mix-blend-mode: normal; backface-visibility: hidden; }
+  ::view-transition-old(root) { animation: pt-old 1.2s cubic-bezier(0.45, 0, 0.35, 1) both; }
+  ::view-transition-new(root) {
+    animation: pt-new 1.2s cubic-bezier(0.45, 0, 0.35, 1) both;
+    -webkit-mask-image: linear-gradient(270deg, #000 calc(-70% + 170% * var(--pt-wipe)), transparent calc(170% * var(--pt-wipe)));
+    mask-image: linear-gradient(270deg, #000 calc(-70% + 170% * var(--pt-wipe)), transparent calc(170% * var(--pt-wipe)));
+  }
+}
+
 /* Hareketi azalt tercihleri */
 @media (prefers-reduced-motion: reduce) {
   .hs { height: auto; }
