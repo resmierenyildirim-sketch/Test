@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { asset } from '@/lib/asset';
 
 const services = [
   { n: '01', title: 'Tailored Strategic Planning Sessions', img: '/img/planning-sessions.webp',
@@ -24,7 +25,7 @@ export default function Services() {
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {services.map((s) => (
               <article key={s.n} className="overflow-hidden rounded-2xl bg-white">
-                <Image src={s.img} alt="" width={1000} height={1000} sizes="(min-width:768px) 33vw, 100vw" className="aspect-[4/3] w-full object-cover" />
+                <Image src={asset(s.img)} alt="" width={1000} height={1000} sizes="(min-width:768px) 33vw, 100vw" className="aspect-[4/3] w-full object-cover" />
                 <div className="p-8">
                   <p className="text-accent">{s.n}</p>
                   <h3 className="mt-3 text-2xl font-semibold leading-tight">{s.title}</h3>
@@ -41,8 +42,8 @@ export default function Services() {
 
       <section className="mx-auto grid max-w-7xl gap-12 px-6 py-24 md:grid-cols-[1fr_1.2fr]">
         <div className="grid grid-cols-2 gap-4">
-          <Image src="/img/team-photo.webp" alt="The Harbor team" width={1000} height={1325} sizes="(min-width:768px) 20vw, 50vw" className="rounded-2xl object-cover" />
-          <Image src="/img/office.webp" alt="Harbor office" width={1000} height={1325} sizes="(min-width:768px) 20vw, 50vw" className="mt-12 rounded-2xl object-cover" />
+          <Image src={asset("/img/team-photo.webp")} alt="The Harbor team" width={1000} height={1325} sizes="(min-width:768px) 20vw, 50vw" className="rounded-2xl object-cover" />
+          <Image src={asset("/img/office.webp")} alt="Harbor office" width={1000} height={1325} sizes="(min-width:768px) 20vw, 50vw" className="mt-12 rounded-2xl object-cover" />
         </div>
         <div className="divide-y divide-black/10">
           {points.map((p) => (

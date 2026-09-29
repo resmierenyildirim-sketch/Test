@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { asset } from '@/lib/asset';
 
 const items = [
   { img: '/img/zeelool-glasses-kJy7MMIfcNU.webp', name: 'Samuel Mitchell', role: 'Restaurant Owner',
@@ -19,7 +20,7 @@ export default function Testimonials() {
           <figure key={t.name} className="flex flex-col rounded-2xl bg-neutral-100 p-8">
             <blockquote className="flex-1 text-xl leading-snug">“{t.quote}”</blockquote>
             <figcaption className="mt-8 flex items-center gap-4">
-              <Image src={t.img} alt={t.name} width={56} height={56} className="size-14 rounded-full object-cover" />
+              <Image src={asset(t.img)} alt={t.name} width={56} height={56} className="size-14 rounded-full object-cover" />
               <div>
                 <p className="font-semibold">{t.name}</p>
                 <p className="text-sm opacity-60">{t.role}</p>

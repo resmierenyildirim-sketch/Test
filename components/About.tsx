@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { asset } from '@/lib/asset';
 
 export default function About() {
   return (
@@ -13,7 +14,7 @@ export default function About() {
         </p>
         <a href="#services" className="mt-8 inline-block rounded-full bg-black px-6 py-3 text-sm font-medium text-white hover:bg-accent">View Services</a>
       </div>
-      <Image src="/img/ceo-2.webp" alt="Harbor founder" width={768} height={794} className="w-full rounded-2xl object-cover" />
+      <Image src={asset("/img/ceo-2.webp")} alt="Harbor founder" width={768} height={794} className="w-full rounded-2xl object-cover" />
     </section>
   );
 }
