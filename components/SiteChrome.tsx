@@ -113,14 +113,11 @@ export default function SiteChrome({ children, home = true, ticker = true }: Pro
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" strokeWidth="1.4" strokeLinecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19" /></svg>
         </button>
         <nav aria-label="Mobile">
-          {nav.map((l, i) => {
-            const current = home ? l.href !== contactHref : l.href === contactHref;
-            return (
-              <SmartLink key={l.label} href={href(l.href)} onClick={closeMenu} style={{ '--i': i } as CSSProperties} data-current={current ? '' : undefined}>
-                {l.label}
-              </SmartLink>
-            );
-          })}
+          {nav.map((l, i) => (
+            <SmartLink key={l.label} href={href(l.href)} onClick={closeMenu} style={{ '--i': i } as CSSProperties} aria-current={isCurrent(l.href) ? 'page' : undefined}>
+              {l.label}
+            </SmartLink>
+          ))}
         </nav>
       </div>
     </>

@@ -205,12 +205,22 @@ body[data-menu="open"] .ocm-panel { visibility: visible; opacity: 1; transition:
   display: flex; flex-direction: column; gap: 12px;
 }
 .ocm-panel nav a {
-  font-size: 24px; line-height: 26px; width: fit-content; opacity: 0; transform: translateX(24px);
-  transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.3, 1, 0.3, 0.95);
+  position: relative; width: fit-content; font-size: 24px; line-height: 26px; color: #e5e5e5;
+  opacity: 0; transform: translateX(24px);
+  transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.3, 1, 0.3, 0.95), color 0.37s cubic-bezier(0.52, 0.01, 0.16, 1);
 }
-body[data-menu="open"] .ocm-panel nav a { opacity: 1; transform: none; transition-delay: calc(0.15s + var(--i) * 0.05s); }
-.ocm-panel nav a[data-current] { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
-.ocm-panel nav a:not([data-current]) { color: #e5e5e5; }
+body[data-menu="open"] .ocm-panel nav a {
+  opacity: 1; transform: none;
+  transition-delay: calc(0.15s + var(--i) * 0.05s), calc(0.15s + var(--i) * 0.05s), 0s;
+}
+/* Hover: renk beyaza geçer, 1px çizgi soldan sağa uzar; çıkınca sola çekilir (orijinal Salient off-canvas menüsü) */
+.ocm-panel nav a::after {
+  content: ""; position: absolute; left: 0; bottom: -2px; width: 100%; height: 0; border-top: 1px solid #fff;
+  transform: scaleX(0); transform-origin: left; pointer-events: none;
+  transition: transform 0.37s cubic-bezier(0.52, 0.01, 0.16, 1);
+}
+.ocm-panel nav a:hover, .ocm-panel nav a:focus-visible { color: #fff; }
+.ocm-panel nav a:hover::after, .ocm-panel nav a:focus-visible::after { transform: scaleX(1); }
 .ocm-close { position: absolute; top: 33px; right: 33px; width: 34px; height: 34px; display: grid; place-items: center; }
 
 /* =====================================================================
