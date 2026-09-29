@@ -97,3 +97,9 @@ html.lenis, html.lenis body { height: auto; }
   .deck-stack { display: flex !important; flex-direction: column; align-items: center; gap: 1rem; }
   .deck-card { transform: none !important; }
 }
+
+/* ---------- Gökyüzü bölümü: hareketi azaltma tercihi ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .stats-outer { height: auto !important; }
+  .stats-sticky { position: static !important; min-height: 100svh; }
+}
