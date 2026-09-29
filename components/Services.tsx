@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import { asset } from '@/lib/asset';
+import LineReveal from './LineReveal';
+import Reveal from './Reveal';
 
 const services = [
   { n: '01', title: 'Tailored Strategic Planning Sessions', img: '/img/planning-sessions.webp',
@@ -10,51 +12,36 @@ const services = [
     text: 'Exclusive templates, tools, and priority support designed to help you make smarter decisions. With a curated resource library and direct communication channels, you’ll always have expert guidance.' },
 ];
 
-const points = [
-  { title: 'Smarter Decisions, Faster', text: 'Turn complex numbers into clear strategies. Access actionable insights that help you make confident business moves without hesitation.' },
-  { title: 'Growth That Stays on Course', text: 'Track performance against your goals in real time. Keep every department aligned and ensure your company grows with purpose.' },
-  { title: 'Opportunities Before They Surface', text: 'Uncover market shifts and financial signals early. Stay ahead of risks and seize advantages before your competitors even notice.' },
-];
-
+// Kartlar sticky ile üst üste yığılır.
 export default function Services() {
   return (
-    <>
-      <section id="services" className="bg-neutral-100 py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <h2 className="text-4xl font-semibold tracking-tight sm:text-6xl">How we can help you</h2>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {services.map((s) => (
-              <article key={s.n} className="overflow-hidden rounded-2xl bg-white">
-                <Image src={asset(s.img)} alt="" width={1000} height={1000} sizes="(min-width:768px) 33vw, 100vw" className="aspect-[4/3] w-full object-cover" />
-                <div className="p-8">
-                  <p className="text-accent">{s.n}</p>
-                  <h3 className="mt-3 text-2xl font-semibold leading-tight">{s.title}</h3>
-                  <p className="mt-4 opacity-70">{s.text}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-          <p className="mt-12 max-w-2xl text-xl">
+    <section id="services" className="bg-neutral-100 py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <LineReveal as="h2" text="How we can help you" className="text-4xl font-semibold tracking-tight sm:text-6xl" />
+        <div className="mt-14">
+          {services.map((s, i) => (
+            <article
+              key={s.n}
+              className="sticky mb-[12vh] grid overflow-hidden rounded-3xl bg-white shadow-[0_-12px_40px_rgba(0,0,0,0.08)] md:min-h-[60vh] md:grid-cols-2"
+              style={{ top: `calc(5.5rem + ${i} * 1.25rem)` }}
+            >
+              <div className="relative min-h-64 md:min-h-0">
+                <Image src={asset(s.img)} alt="" fill sizes="(min-width:768px) 50vw, 100vw" className="object-cover" />
+              </div>
+              <div className="flex flex-col justify-center p-8 md:p-14">
+                <p className="text-accent">{s.n}</p>
+                <h3 className="mt-3 text-3xl font-semibold leading-tight">{s.title}</h3>
+                <p className="mt-5 opacity-70">{s.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <Reveal>
+          <p className="max-w-2xl text-xl">
             We believe financial clarity comes from turning complex numbers into practical strategies. Our approach helps you move quickly, stay aligned, and uncover opportunities before they arise.
           </p>
-        </div>
-      </section>
-
-      <section className="mx-auto grid max-w-7xl gap-12 px-6 py-24 md:grid-cols-[1fr_1.2fr]">
-        <div className="grid grid-cols-2 gap-4">
-          <Image src={asset("/img/team-photo.webp")} alt="The Harbor team" width={1000} height={1325} sizes="(min-width:768px) 20vw, 50vw" className="rounded-2xl object-cover" />
-          <Image src={asset("/img/office.webp")} alt="Harbor office" width={1000} height={1325} sizes="(min-width:768px) 20vw, 50vw" className="mt-12 rounded-2xl object-cover" />
-        </div>
-        <div className="divide-y divide-black/10">
-          {points.map((p) => (
-            <div key={p.title} className="py-8 first:pt-0">
-              <h3 className="text-2xl font-semibold">{p.title}</h3>
-              <p className="mt-3 max-w-lg opacity-70">{p.text}</p>
-            </div>
-          ))}
-          <p className="pt-8 text-sm opacity-60">Layouts, service descriptions, and visuals here are sample examples. Customize them to fit your industry, audience, and goals.</p>
-        </div>
-      </section>
-    </>
+        </Reveal>
+      </div>
+    </section>
   );
 }
