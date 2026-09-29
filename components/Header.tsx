@@ -48,7 +48,7 @@ export default function Header() {
         }`}
       >
         <div className="mx-auto flex items-center justify-between px-4 py-3 md:px-10 md:py-4">
-          <a href="#top" className="text-xl font-semibold tracking-tight md:text-[1.35rem]">Harbor</a>
+          <a href="#top" className="text-xl font-semibold md:text-2xl">Harbor</a>
           <nav className="hidden gap-8 md:flex" aria-label="Main">
             {links.map((l) => (
               <a key={l.href} href={l.href} className="text-base font-medium hover:opacity-60">{l.label}</a>
