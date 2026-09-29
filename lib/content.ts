@@ -1,11 +1,19 @@
-// Sitedeki tüm metinler burada. Kendi markanı ve içeriğini bu dosyadan değiştir.
+// Sitedeki tüm metinler ve veri burada. Kendi markanı ve içeriğini bu dosyadan değiştir.
 export const brand = 'Harbor';
 
+export const nav = [
+  { href: '#about', label: 'About' },
+  { href: '#services', label: 'Services' },
+  { href: '#testimonials', label: 'Testimonials' },
+  { href: '#pricing', label: 'Pricing' },
+  { href: '#contact', label: 'Contact' },
+];
+
 export const content = {
-  ticker: 'Book a Free Strategy Call',
+  ticker: 'Book Your Strategy Call',
   hero: {
     title: 'Clarity in Motion',
-    card: 'Independent financial advisory for growing teams in New York.',
+    card: 'Independent financial advisory in New York.',
     label: '(NYC Advisors)',
     tagline: 'We bring structure, foresight and calm to every financial decision.',
     cta: 'Book a Call',
@@ -19,11 +27,11 @@ export const content = {
   },
   servicesTitle: 'How we can help you',
   services: [
-    { n: '01', title: 'Strategic Planning Workshops', img: '/img/planning-sessions.webp', bg: 'bg-accent',
+    { n: '01', title: 'Strategic Planning Workshops', img: '/img/planning-sessions.webp', bg: 'bg-accent', titleMax: 75,
       text: 'Map your goals to a concrete roadmap in focused working sessions. We surface trade-offs early so every step has a clear purpose.' },
-    { n: '02', title: 'Advisory & Coaching', img: '/img/advisory.webp', bg: 'bg-sun',
+    { n: '02', title: 'Advisory & Coaching', img: '/img/advisory.webp', bg: 'bg-sun', titleMax: 75,
       text: 'Direct access to an experienced advisor for the questions that keep you up at night. Honest feedback with a fast turnaround.' },
-    { n: '03', title: 'Reporting & Analytics Toolkit', img: '/img/working.webp', bg: 'bg-sky',
+    { n: '03', title: 'Reporting & Analytics Toolkit', img: '/img/working.webp', bg: 'bg-sky', titleMax: 85,
       text: 'Ready-made dashboards, templates and priority support so your team can track progress without drowning in spreadsheets.' },
   ],
   beliefs: {
@@ -57,6 +65,18 @@ export const content = {
   pricing: {
     label: '(Pricing)',
     title: 'Straightforward plans for every stage of growth.',
+    logos: [
+      { src: '/img/logos/logoipsum-8-1.webp', w: 400, h: 303 },
+      { src: '/img/logos/logoipsum-1.webp', w: 400, h: 400 },
+      { src: '/img/logos/logoipsum-3.webp', w: 400, h: 61 },
+      { src: '/img/logos/logoipsum-2.webp', w: 400, h: 244 },
+      { src: '/img/logos/logoipsum-6.webp', w: 400, h: 244 },
+      { src: '/img/logos/logoipsum-378.webp', w: 400, h: 178 },
+      { src: '/img/logos/logoipsum-394.webp', w: 400, h: 400 },
+      { src: '/img/logos/logoipsum-397.webp', w: 400, h: 372 },
+      { src: '/img/logos/logoipsum-42.webp', w: 400, h: 190 },
+      { src: '/img/logos/logoipsum-53.webp', w: 400, h: 76 },
+    ],
     plans: [
       { name: 'Starter', price: '$89', featured: false,
         text: 'For individuals and small teams taking their first steps with a financial plan.',
@@ -71,9 +91,26 @@ export const content = {
     badge: 'Recommended',
     cta: 'Learn More',
     includes: 'Plan Includes:',
+    period: '/month',
+  },
+  cta: {
+    text: 'Ready to talk? Book a meeting and let’s look at your numbers together.',
+    href: 'mailto:hello@example.com',
+    // Fare imlecini takip eden etiketler (masaüstünde bölümün üzerinde gezinince belirir).
+    trail: ['Say hello', 'Let’s talk', 'Start today', 'Call us'],
+    trailColors: ['#ff4a4b', '#ffa628', '#8ccbff'],
   },
   footer: {
-    cta: 'Ready to talk? Book a meeting and let’s look at your numbers together.',
-    tags: ['Say hello', 'Let’s talk', 'Start today', 'Call us'],
+    links: [
+      { href: '#about', label: 'About' },
+      { href: '#services', label: 'Services' },
+      { href: '#pricing', label: 'Pricing' },
+    ],
+    social: [
+      { label: 'X', href: 'https://x.com/', icon: 'x' },
+      { label: 'Instagram', href: 'https://instagram.com/', icon: 'instagram' },
+      { label: 'LinkedIn', href: 'https://linkedin.com/', icon: 'linkedin' },
+    ],
+    rights: 'All Rights Reserved.',
   },
 };

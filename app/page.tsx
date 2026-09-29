@@ -1,29 +1,32 @@
-import Header from '@/components/Header';
+import SiteChrome from '@/components/SiteChrome';
+import SmoothScroll from '@/components/SmoothScroll';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import ServiceCards from '@/components/ServiceCards';
+import Services from '@/components/Services';
 import Points from '@/components/Points';
 import Stats from '@/components/Stats';
 import TestimonialDeck from '@/components/TestimonialDeck';
 import Pricing from '@/components/Pricing';
+import Cta from '@/components/Cta';
 import Footer from '@/components/Footer';
-import SmoothScroll from '@/components/SmoothScroll';
 
 export default function Home() {
   return (
     <>
       <SmoothScroll />
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <ServiceCards />
-        <Points />
-        <Stats />
-        <TestimonialDeck />
-        <Pricing />
-      </main>
-      <Footer />
+      <SiteChrome>
+        <main>
+          <Hero />
+          <About />
+          <Services />
+          <Points />
+          <Stats />
+          <TestimonialDeck />
+          <Pricing />
+          <Cta />
+        </main>
+        <Footer />
+      </SiteChrome>
     </>
   );
 }
