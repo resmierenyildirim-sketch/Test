@@ -1,10 +1,12 @@
-import Link from 'next/link';
 import type { AnchorHTMLAttributes, ReactNode } from 'react';
+import { asset } from '@/lib/asset';
 
 type Props = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & { href: string; children: ReactNode };
 
-// "/" ile başlayan iç sayfa bağlantıları Next Link (basePath otomatik), diğerleri (#hash, mailto, dış) düz <a>.
+// "/" ile başlayan sayfalar arası bağlantılar bilerek TAM SAYFA gezinmesidir (Next Link değil):
+// böylece tarayıcının sayfalar arası View Transition'ı (globals.css → "Sayfa geçişi") çalışır,
+// tıpkı orijinal temadaki gibi. #hash, mailto ve dış bağlantılar olduğu gibi kalır.
 export default function SmartLink({ href, children, ...rest }: Props) {
-  if (href.startsWith('/')) return <Link href={href} {...rest}>{children}</Link>;
-  return <a href={href} {...rest}>{children}</a>;
+  const url = href.startsWith('/') ? asset(href) : href;
+  return <a href={url} {...rest}>{children}</a>;
 }
