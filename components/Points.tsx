@@ -1,28 +1,32 @@
 import Image from 'next/image';
 import { asset } from '@/lib/asset';
-import { panels } from '@/lib/panels';
-import HorizontalScroll from './HorizontalScroll';
+import { content } from '@/lib/content';
+import LineReveal from './LineReveal';
 import Reveal from './Reveal';
 
-// Mobilde iki foto + düz liste; masaüstünde yatay kaydırma bölümü.
 export default function Points() {
+  const b = content.beliefs;
   return (
-    <>
-      <section className="px-4 pb-20 pt-2 md:hidden">
-        <div className="grid grid-cols-2 gap-3">
-          <Image src={asset('/img/team-photo.webp')} alt="The Harbor team" width={1000} height={1325} sizes="50vw" className="aspect-[3/4] w-full rounded-2xl object-cover" />
-          <Image src={asset('/img/office.webp')} alt="Harbor office" width={1000} height={1325} sizes="50vw" className="mt-10 aspect-[3/4] w-full rounded-2xl object-cover" />
+    <section className="px-4 pb-20 pt-6 md:px-10 md:pb-32 md:pt-28">
+      <LineReveal as="p" text={b.lead} className="max-w-[92rem] text-[1.7rem] font-light leading-[1.25] tracking-[-0.02em] md:text-[2.75rem]" />
+      <div className="mt-10 grid gap-10 md:mt-20 md:grid-cols-2">
+        <div className="flex h-[72vw] gap-2.5 md:h-[37rem]">
+          <div className="relative w-[62%] overflow-hidden rounded-2xl">
+            <Image src={asset('/img/team-photo.webp')} alt="The Harbor team" fill sizes="(min-width:768px) 30vw, 60vw" className="object-cover" />
+          </div>
+          <div className="relative w-[38%] overflow-hidden rounded-2xl">
+            <Image src={asset('/img/office.webp')} alt="Harbor office" fill sizes="(min-width:768px) 20vw, 40vw" className="object-cover" />
+          </div>
         </div>
-        <div className="mt-10 space-y-6 px-1">
-          {panels.map((p, i) => (
-            <Reveal key={p.title} delay={i * 80}>
-              <h3 className="text-xl font-normal">{p.title}</h3>
-              <p className="mt-2 text-[0.95rem] font-light opacity-70">{p.text}</p>
+        <div className="flex flex-col justify-end gap-8 md:pl-[14vw]">
+          {b.items.map((it, i) => (
+            <Reveal key={it.title} delay={i * 100}>
+              <h3 className="text-xl font-normal md:text-2xl">{it.title}</h3>
+              <p className="mt-2 max-w-md text-[0.95rem] leading-relaxed">{it.text}</p>
             </Reveal>
           ))}
         </div>
-      </section>
-      <HorizontalScroll />
-    </>
+      </div>
+    </section>
   );
 }
