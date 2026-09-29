@@ -18,7 +18,7 @@ const socials = [
 export default function Footer() {
   const f = content.footer;
   return (
-    <footer id="contact" className="overflow-hidden bg-white text-[#1c1c1c]">
+    <footer id="contact" className="overflow-hidden bg-white text-[#1e1e1e]">
       <div className="animated-gradient-soft relative mx-auto flex min-h-[26rem] items-center justify-center px-6 py-20 md:min-h-[36rem]">
         {f.tags.map((label, i) => {
           const { rot, delay, href, ...pos } = tagPos[i];
@@ -34,7 +34,7 @@ export default function Footer() {
           );
         })}
         <a href="mailto:hello@example.com" className="relative block max-w-3xl text-center">
-          <LineReveal as="p" text={f.cta} className="text-2xl font-light leading-snug tracking-[-0.02em] md:text-[2.75rem]" />
+          <LineReveal as="p" text={f.cta} className="text-2xl font-normal leading-snug md:text-[3vw]" />
         </a>
       </div>
 

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter_Tight } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+const font = Inter_Tight({ subsets: ['latin'], variable: '--font-inter-tight', display: 'swap' });
 
 export const metadata: Metadata = {
   title: 'Harbor | Financial Consulting in Manhattan, New York',
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={font.variable}>
       <body>{children}</body>
     </html>
   );

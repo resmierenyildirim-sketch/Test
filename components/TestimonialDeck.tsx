@@ -58,11 +58,11 @@ export default function TestimonialDeck() {
               style={{ zIndex: items.length - i }}
             >
               <div className="flex items-start justify-between">
-                <span className="text-7xl font-light leading-none tracking-[-0.04em]" aria-hidden="true">{t.name[0]}</span>
+                <span className="text-7xl font-normal leading-none" aria-hidden="true">{t.name[0]}</span>
                 <Image src={asset(t.img)} alt={t.name} width={96} height={146} className="h-32 w-24 rounded-2xl object-cover" />
               </div>
               <div>
-                <blockquote className="text-xl font-normal leading-snug tracking-[-0.02em]">“{t.quote}”</blockquote>
+                <blockquote className="text-xl font-normal leading-snug">“{t.quote}”</blockquote>
                 <figcaption className="mt-6">
                   <p className="text-sm font-semibold">{t.name}</p>
                   <p className="text-sm">{t.role}</p>

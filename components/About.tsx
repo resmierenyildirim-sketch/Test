@@ -8,11 +8,11 @@ export default function About() {
   const a = content.about;
   return (
     <section id="about" className="px-4 pb-16 pt-20 md:px-10 md:pb-24 md:pt-32">
-      <LineReveal as="p" text={a.lead} className="max-w-[92rem] text-[1.7rem] font-light leading-[1.25] tracking-[-0.02em] md:text-[2.75rem]" />
+      <LineReveal as="p" text={a.lead} className="max-w-[92rem] text-[1.7rem] font-normal leading-[1.2] md:text-[3vw]" />
       <div className="mt-10 grid gap-8 md:mt-16 md:grid-cols-2">
         <p className="text-sm md:text-base">{a.label}</p>
         <Reveal delay={150} className="flex flex-col gap-8 md:flex-row md:justify-between">
-          <div className="max-w-sm text-[0.95rem] leading-relaxed md:text-base">
+          <div className="max-w-sm text-base leading-relaxed md:text-base">
             <p>{a.p1}</p>
             <p className="mt-6">{a.p2}</p>
             <a href="#services" className="mt-6 inline-block border-b border-current pb-0.5 text-sm">{a.link}</a>

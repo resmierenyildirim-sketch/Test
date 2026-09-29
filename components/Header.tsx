@@ -40,7 +40,7 @@ export default function Header() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-40 transition-[transform,opacity,color] duration-[700ms] ease-[cubic-bezier(.22,1,.36,1)] motion-reduce:transition-none ${
-          solid ? 'text-[#1c1c1c]' : 'text-white'
+          solid ? 'text-[#1e1e1e]' : 'text-white'
         } ${
           hidden
             ? 'pointer-events-none -translate-y-full opacity-0'
@@ -51,7 +51,7 @@ export default function Header() {
           <a href="#top" className="text-xl font-semibold tracking-tight md:text-[1.35rem]">Harbor</a>
           <nav className="hidden gap-8 md:flex" aria-label="Main">
             {links.map((l) => (
-              <a key={l.href} href={l.href} className="text-[0.95rem] font-medium hover:opacity-60">{l.label}</a>
+              <a key={l.href} href={l.href} className="text-base font-medium hover:opacity-60">{l.label}</a>
             ))}
           </nav>
           <button
@@ -83,7 +83,7 @@ export default function Header() {
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className={`text-3xl font-light transition-all duration-500 ${open ? 'translate-x-0 opacity-100' : 'translate-x-6 opacity-0'}`}
+              className={`text-3xl font-normal transition-all duration-500 ${open ? 'translate-x-0 opacity-100' : 'translate-x-6 opacity-0'}`}
               style={{ transitionDelay: open ? `${200 + i * 60}ms` : '0ms' }}
             >
               {l.label}

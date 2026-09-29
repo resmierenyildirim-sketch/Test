@@ -36,7 +36,7 @@ export default function ServiceCards() {
   return (
     <section id="services">
       <div className="px-4 pb-8 pt-8 md:px-10 md:pb-10 md:pt-16">
-        <LineReveal as="h2" text={servicesTitle} className="text-[1.7rem] font-light tracking-[-0.02em] md:text-[2.75rem]" />
+        <LineReveal as="h2" text={servicesTitle} className="text-[1.7rem] font-normal md:text-[3vw]" />
       </div>
 
       {/* Masaüstü: yatay kaydırma */}
@@ -46,9 +46,9 @@ export default function ServiceCards() {
             {services.map((s) => (
               <article key={s.n} className={`grid h-full shrink-0 grid-cols-[55fr_45fr] overflow-hidden rounded-[15px] ${s.bg}`} style={{ width: `${CARD_VW}vw` }}>
                 <div className="flex flex-col justify-between py-10 pl-14 pr-6">
-                  <p className="text-[19vw] font-light leading-[0.8] tracking-[-0.06em]">{s.n}</p>
-                  <h3 className="max-w-md text-[2.4rem] font-light leading-[1.15] tracking-[-0.02em]">{s.title}</h3>
-                  <p className="max-w-lg text-[0.95rem] leading-relaxed">{s.text}</p>
+                  <p className="text-[20vw] font-normal leading-[0.85]">{s.n}</p>
+                  <h3 className="max-w-md text-[3vw] font-normal leading-[1.3]">{s.title}</h3>
+                  <p className="max-w-lg text-base leading-relaxed">{s.text}</p>
                 </div>
                 <div className="relative my-14 mr-14 overflow-hidden rounded-[15px]">
                   <Image src={asset(s.img)} alt="" fill sizes="40vw" className="object-cover" />
@@ -67,9 +67,9 @@ export default function ServiceCards() {
             className={`sticky mb-[6vh] flex flex-col rounded-[20px] p-6 ${s.bg}`}
             style={{ top: `calc(5.5rem + ${i} * 1rem)` }}
           >
-            <p className="text-7xl font-light leading-none tracking-[-0.06em]">{s.n}</p>
-            <h3 className="mt-8 text-2xl font-light leading-tight">{s.title}</h3>
-            <p className="mt-4 text-[0.95rem] leading-relaxed">{s.text}</p>
+            <p className="text-7xl font-normal leading-none">{s.n}</p>
+            <h3 className="mt-8 text-2xl font-normal leading-tight">{s.title}</h3>
+            <p className="mt-4 text-base leading-relaxed">{s.text}</p>
             <div className="relative mt-6 aspect-[4/3] overflow-hidden rounded-2xl">
               <Image src={asset(s.img)} alt="" fill sizes="100vw" className="object-cover" />
             </div>

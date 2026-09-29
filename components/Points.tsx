@@ -8,7 +8,7 @@ export default function Points() {
   const b = content.beliefs;
   return (
     <section className="px-4 pb-20 pt-6 md:px-10 md:pb-32 md:pt-28">
-      <LineReveal as="p" text={b.lead} className="max-w-[92rem] text-[1.7rem] font-light leading-[1.25] tracking-[-0.02em] md:text-[2.75rem]" />
+      <LineReveal as="p" text={b.lead} className="max-w-[92rem] text-[1.7rem] font-normal leading-[1.2] md:text-[3vw]" />
       <div className="mt-10 grid gap-10 md:mt-20 md:grid-cols-2">
         <div className="flex items-end justify-between gap-[1.5%] md:max-w-[54rem]">
           <div className="relative aspect-[3/4] w-[65.5%] overflow-hidden rounded-2xl">
@@ -22,7 +22,7 @@ export default function Points() {
           {b.items.map((it, i) => (
             <Reveal key={it.title} delay={i * 100}>
               <h3 className="text-xl font-normal md:text-2xl">{it.title}</h3>
-              <p className="mt-2 max-w-md text-[0.95rem] leading-relaxed">{it.text}</p>
+              <p className="mt-2 max-w-md text-base leading-relaxed">{it.text}</p>
             </Reveal>
           ))}
         </div>
