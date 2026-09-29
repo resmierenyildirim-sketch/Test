@@ -21,7 +21,7 @@ export default function Pricing() {
       <LineReveal
         as="h2"
         text={p.title}
-        className="mx-auto mt-5 max-w-[64rem] text-center text-[1.7rem] font-light leading-[1.2] tracking-[-0.02em] md:text-[2.75rem]"
+        className="mx-auto mt-5 max-w-[64rem] text-center text-[1.7rem] font-normal leading-[1.2] md:text-[3vw]"
       />
       <div className="mx-auto mt-12 flex max-w-6xl items-center justify-between gap-6 px-2 opacity-70 md:mt-16" aria-hidden="true">
         {marks.map((m, i) => (
@@ -34,14 +34,14 @@ export default function Pricing() {
           <Reveal key={plan.name} delay={i * 120} className={`flex ${i > 0 ? 'md:border-l md:border-black/15' : ''}`}>
             <article className="flex w-full flex-col md:p-10">
               <div className="flex items-center justify-between">
-                <h3 className="text-2xl font-light md:text-[1.7rem]">{plan.name}</h3>
+                <h3 className="text-2xl font-normal md:text-[1.8rem]">{plan.name}</h3>
                 {plan.featured && <span className="rounded-full bg-accent px-3.5 py-1.5 text-sm">{p.badge}</span>}
               </div>
-              <p className="mt-5 min-h-[5.5rem] text-[0.95rem] leading-relaxed opacity-60">{plan.text}</p>
-              <p className="mt-10 text-5xl font-light tracking-[-0.04em] md:mt-16">{plan.price}<span className="ml-1 text-base tracking-normal opacity-70">/month</span></p>
+              <p className="mt-5 min-h-[5.5rem] text-base leading-relaxed opacity-60">{plan.text}</p>
+              <p className="mt-10 text-5xl font-normal md:mt-16">{plan.price}<span className="ml-1 text-base tracking-normal opacity-70">/month</span></p>
               <Button href="#contact" arrow full className="mt-6">{p.cta}</Button>
               <p className="mt-10 text-sm opacity-70">{p.includes}</p>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-[0.95rem] marker:opacity-50">
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-base marker:opacity-50">
                 {plan.features.map((f) => <li key={f}>{f}</li>)}
               </ul>
             </article>

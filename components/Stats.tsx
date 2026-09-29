@@ -15,7 +15,7 @@ export default function Stats() {
         <div className="stats-sticky sticky top-0 flex h-svh flex-col justify-between px-4 pb-10 pt-[16vh] md:px-10 md:pb-14">
           <ScrollFill
             text={s.lead}
-            className="max-w-[88rem] text-[2.1rem] font-light leading-[1.22] tracking-[-0.03em] md:text-[4.7vw]"
+            className="max-w-[88rem] text-[2.1rem] font-normal leading-[1.2] md:text-[5vw]"
           />
           <div className="border-t border-white/30 pt-6">
             <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 md:gap-x-10">
@@ -23,7 +23,7 @@ export default function Stats() {
                 <Reveal key={it.label} delay={i * 140}>
                   <span className="inline-block rounded-full bg-white/20 px-5 py-2 text-sm backdrop-blur-sm md:text-lg">{it.label}</span>
                   <div className="mt-6 flex flex-col gap-3 md:mt-10 md:flex-row md:items-end md:gap-6">
-                    <p className="text-5xl font-light leading-none tracking-[-0.04em] md:text-[3.4vw]">{it.value}</p>
+                    <p className="text-5xl font-normal leading-none md:text-[3vw]">{it.value}</p>
                     <p className="max-w-[15rem] text-sm leading-snug md:pb-1 md:text-lg">{it.text}</p>
                   </div>
                 </Reveal>

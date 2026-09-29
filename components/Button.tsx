@@ -28,7 +28,7 @@ export default function Button({ href, children, variant = 'dark', arrow = false
     ? `${full ? 'flex w-full justify-between' : 'inline-flex'} items-center gap-5 py-1.5 pl-6 pr-1.5`
     : 'inline-block px-7 py-3.5';
   return (
-    <a href={href} className={`tr-btn rounded-full text-sm font-medium ${layout} ${v.pill} ${className}`}>
+    <a href={href} className={`tr-btn rounded-full text-[0.9rem] font-medium ${layout} ${v.pill} ${className}`}>
       <span className="tr-clip">
         <span className="tr-line">{children}</span>
         <span className="tr-line" aria-hidden="true">{children}</span>
