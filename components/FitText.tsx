@@ -39,13 +39,14 @@ export default function FitText({ children, as = 'p', className, letters = false
   }, [children, scale]);
 
   const words = children.split(' ');
+  const stagger = Math.min(35, Math.max(20, 400 / children.replace(/ /g, '').length));
   let idx = 0;
   return (
     <Tag
       ref={(n: HTMLElement | null) => { fitRef.current = n; (inView as React.MutableRefObject<HTMLElement | null>).current = n; }}
       data-fx={letters ? 'letters' : undefined}
       className={className}
-      style={{ display: 'inline-block', whiteSpace: 'nowrap', '--d': delay } as CSSProperties}
+      style={{ display: 'inline-block', whiteSpace: 'nowrap', '--d': delay, '--st': `${stagger}ms` } as CSSProperties}
       aria-label={children}
     >
       {letters

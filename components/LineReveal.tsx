@@ -18,7 +18,7 @@ export default function LineReveal({ text, as = 'p', className, delay = 0, fx = 
   const Tag = as as ElementType;
   const words = text.split(' ');
   return (
-    <Tag ref={ref} data-fx={fx} className={className} style={{ '--d': delay } as CSSProperties} aria-label={text}>
+    <Tag ref={ref} data-fx={fx} className={className} style={{ '--d': delay, '--st': `${Math.min(50, Math.max(15, 500 / words.length))}ms` } as CSSProperties} aria-label={text}>
       {words.map((w, i) => (
         <Fragment key={i}>
           <span aria-hidden="true" className="rv-w">
