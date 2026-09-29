@@ -1,3 +1,5 @@
+import SmartLink from './SmartLink';
+
 type Props = {
   href: string;
   children: string;
@@ -17,9 +19,9 @@ function Arrow({ alt = false }: { alt?: boolean }) {
 // Salient "arrow-circle-animation" düğmesi: hover'da ok sağ üste çıkıp yenisi içeri kayar.
 export default function Button({ href, children, tone = 'light', full = false, className = '' }: Props) {
   return (
-    <a href={href} className={`btn ${className}`} data-tone={tone === 'dark' ? 'dark' : undefined} data-full={full || undefined}>
+    <SmartLink href={href} className={`btn ${className}`} data-tone={tone === 'dark' ? 'dark' : undefined} data-full={full || undefined}>
       <span>{children}</span>
       <span className="btn-dot"><Arrow /><Arrow alt /></span>
-    </a>
+    </SmartLink>
   );
 }

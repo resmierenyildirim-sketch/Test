@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { asset } from '@/lib/asset';
-import { content } from '@/lib/content';
+import { contactHref, content } from '@/lib/content';
 import Button from './Button';
 import FitText from './FitText';
 import HeroBg from './HeroBg';
@@ -19,7 +19,7 @@ export default function Hero() {
             <Image src={asset('/img/shaurya-kauhsish-w9Ae-0Gap9I.webp')} alt="Harbor advisor" width={800} height={800} priority />
             <div className="hero-card-body">
               <p>{h.card}</p>
-              <Button href="#contact">{h.cta}</Button>
+              <Button href={contactHref}>{h.cta}</Button>
             </div>
           </div>
           <p className="hero-label">{h.label}</p>

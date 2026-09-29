@@ -28,6 +28,14 @@ npm run lint     # tsc --noEmit
 | `components/ContentTrail.tsx` | CTA bölümünde imleci izleyen etiketler |
 | `components/AnimatedGradient.tsx` | Footer'daki simplex gürültülü hareketli gradient |
 
+## İletişim sayfası (`/contact`)
+
+- Orijinal temanın Contact sayfası birebir uyarlandı; tüm "Book a call / Contact / Learn More" bağlantıları buraya gider.
+- Form doğrulaması (zorunlu alanlar, e-posta biçimi) orijinaldeki gibi çalışır. Statik sitede sunucu olmadığı için:
+  - `NEXT_PUBLIC_CONTACT_ENDPOINT` tanımlıysa (ör. Formspree adresi) form oraya JSON olarak gönderilir,
+  - tanımlı değilse e-posta uygulaması hazır mesajla açılır (`mailto:`).
+- Metinler ve alanlar `lib/content.ts` içindeki `contact` bölümündedir.
+
 ## Duyarlı ölçekleme
 
 Masaüstünde (≥1000px) yazı boyutları `(genişlik + 160) / 1600` katsayısıyla ölçeklenir, tablette (691–999px) ve telefonda (≤690px) sabittir.

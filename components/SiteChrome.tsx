@@ -1,19 +1,31 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
-import { brand, content, nav } from '@/lib/content';
+import { brand, contactHref, content, nav } from '@/lib/content';
 import RevealLink from './RevealLink';
+import SmartLink from './SmartLink';
 import Ticker from './Ticker';
 
 type Lenis = { stop: () => void; start: () => void };
 
+type Props = {
+  children: ReactNode;
+  /** Ana sayfa mı? (#bölüm bağlantıları sayfa içi kayar; diğer sayfalarda "/#bölüm" olur) */
+  home?: boolean;
+  /** Üstteki kayan yazılı bant (yalnızca ana sayfada) */
+  ticker?: boolean;
+};
+
 // Üst bant + menü + mobil menü (sayfayı sola iterek açılır) ve tüm sayfayı saran kabuk.
-export default function SiteChrome({ children }: { children: ReactNode }) {
+export default function SiteChrome({ children, home = true, ticker = true }: Props) {
   const [top, setTop] = useState(true);
   const [hidden, setHidden] = useState(false);
-  const [tone, setTone] = useState<'light' | 'dark'>('light');
+  const [tone, setTone] = useState<'light' | 'dark'>(home ? 'light' : 'dark');
   const [open, setOpen] = useState(false);
   const wrap = useRef<HTMLDivElement>(null);
+
+  const href = (h: string) => (h.startsWith('#') && !home ? `/${h}` : h);
+  const isCurrent = (h: string) => (home ? false : h === contactHref);
 
   // Aşağı kaydırırken gizlenir, yukarı kaydırırken geri gelir; rengi altındaki bölüme göre değişir.
   useEffect(() => {
@@ -67,14 +79,23 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
   return (
     <>
       <div ref={wrap} className="ocm-wrap" style={{ '--sy': '0px' } as CSSProperties}>
-        <header className="hdr" data-top={top} data-hidden={hidden} data-tone={tone} data-menu-open={open || undefined}>
-          <div className="hdr-tk">
-            <a href="#contact" className="hdr-pill zoom-reveal" aria-label="Book a call"><Ticker text={content.ticker} /></a>
-          </div>
+        <header
+          className="hdr"
+          data-top={top}
+          data-hidden={hidden}
+          data-tone={tone}
+          data-menu-open={open || undefined}
+          style={ticker ? undefined : ({ '--tk': '0px' } as CSSProperties)}
+        >
+          {ticker && (
+            <div className="hdr-tk">
+              <SmartLink href={contactHref} className="hdr-pill zoom-reveal" aria-label="Book a call"><Ticker text={content.ticker} /></SmartLink>
+            </div>
+          )}
           <div className="hdr-nav">
-            <a href="#top" className="hdr-logo">{brand}</a>
+            <SmartLink href={home ? '#top' : '/'} className="hdr-logo">{brand}</SmartLink>
             <nav className="hdr-links" aria-label="Main">
-              {nav.map((l) => <RevealLink key={l.href} href={l.href}>{l.label}</RevealLink>)}
+              {nav.map((l) => <RevealLink key={l.label} href={href(l.href)} current={isCurrent(l.href)}>{l.label}</RevealLink>)}
             </nav>
             <button className="burger" aria-label="Open menu" aria-expanded={open} aria-controls="ocm" onClick={openMenu}>
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
@@ -92,11 +113,14 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" strokeWidth="1.4" strokeLinecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19" /></svg>
         </button>
         <nav aria-label="Mobile">
-          {nav.map((l, i) => (
-            <a key={l.href} href={l.href} onClick={closeMenu} style={{ '--i': i } as CSSProperties} data-current={l.label !== 'Contact' ? '' : undefined}>
-              {l.label}
-            </a>
-          ))}
+          {nav.map((l, i) => {
+            const current = home ? l.href !== contactHref : l.href === contactHref;
+            return (
+              <SmartLink key={l.label} href={href(l.href)} onClick={closeMenu} style={{ '--i': i } as CSSProperties} data-current={current ? '' : undefined}>
+                {l.label}
+              </SmartLink>
+            );
+          })}
         </nav>
       </div>
     </>
