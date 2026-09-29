@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0b0b0c;
+  --color-paper: #ffffff;
+  --color-accent: #ff4a4b;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--color-paper); color: var(--color-ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.eyebrow { font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; opacity: .7; }
