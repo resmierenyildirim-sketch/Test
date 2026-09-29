@@ -39,9 +39,13 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 z-40 transition-[transform,color,top] duration-500 ease-[cubic-bezier(.2,.7,.2,1)] ${
-          solid ? 'top-0 text-[#1c1c1c]' : 'top-14 text-white'
-        } ${hidden ? '-translate-y-[220%]' : 'translate-y-0'}`}
+        className={`fixed inset-x-0 top-0 z-40 transition-[transform,opacity,color] duration-[700ms] ease-[cubic-bezier(.22,1,.36,1)] motion-reduce:transition-none ${
+          solid ? 'text-[#1c1c1c]' : 'text-white'
+        } ${
+          hidden
+            ? 'pointer-events-none -translate-y-full opacity-0'
+            : `opacity-100 ${solid ? 'translate-y-0' : 'translate-y-14'}`
+        }`}
       >
         <div className="mx-auto flex items-center justify-between px-4 py-3 md:px-10 md:py-4">
           <a href="#top" className="text-xl font-semibold tracking-tight md:text-[1.35rem]">Harbor</a>
