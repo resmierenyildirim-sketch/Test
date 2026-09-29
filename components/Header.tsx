@@ -30,14 +30,14 @@ export default function Header() {
     <>
       <header
         className={`fixed inset-x-0 z-40 transition-all duration-500 ${
-          solid ? 'top-0 bg-white/80 text-black backdrop-blur-md' : 'top-16 text-white md:top-4'
+          solid ? 'top-0 bg-white/80 text-black backdrop-blur-md' : 'top-14 text-white'
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-6 md:py-4">
-          <a href="#top" className="text-xl font-normal tracking-tight md:text-2xl">Harbor</a>
+        <div className="mx-auto flex items-center justify-between px-4 py-3 md:px-10 md:py-4">
+          <a href="#top" className="text-xl font-semibold tracking-tight md:text-[1.35rem]">Harbor</a>
           <nav className="hidden gap-8 md:flex" aria-label="Main">
             {links.map((l) => (
-              <a key={l.href} href={l.href} className="text-sm hover:opacity-60">{l.label}</a>
+              <a key={l.href} href={l.href} className="text-[0.95rem] font-medium hover:opacity-60">{l.label}</a>
             ))}
           </nav>
           <button

@@ -1,30 +1,25 @@
 import Image from 'next/image';
 import { asset } from '@/lib/asset';
+import { content } from '@/lib/content';
 import LineReveal from './LineReveal';
 import Reveal from './Reveal';
 
 export default function About() {
+  const a = content.about;
   return (
-    <section id="about" className="mx-auto grid max-w-7xl gap-12 px-5 py-20 md:grid-cols-2 md:items-center md:px-6 md:py-28">
-      <div>
-        <LineReveal
-          as="p"
-          className="text-[1.7rem] font-light leading-snug sm:text-4xl md:text-5xl"
-          text="We provide leaders with the strategies they need to make confident decisions. Our approach combines actionable insights with personalized guidance."
-        />
-        <Reveal delay={200}>
-          <p className="eyebrow mt-10">(About Us)</p>
-          <p className="mt-4 max-w-lg text-base font-light opacity-70 md:text-lg">
-            Whether you’re just starting out or scaling to the next level, we’re here to support your growth every step of the way.
-          </p>
-          <a href="#services" className="group mt-6 inline-flex items-center gap-2 text-sm underline underline-offset-[6px]">
-            View Services <span className="transition-transform group-hover:translate-x-1">→</span>
-          </a>
+    <section id="about" className="px-4 pb-16 pt-20 md:px-10 md:pb-24 md:pt-32">
+      <LineReveal as="p" text={a.lead} className="max-w-[92rem] text-[1.7rem] font-light leading-[1.25] tracking-[-0.02em] md:text-[2.75rem]" />
+      <div className="mt-10 grid gap-8 md:mt-16 md:grid-cols-2">
+        <p className="text-sm md:text-base">{a.label}</p>
+        <Reveal delay={150} className="flex flex-col gap-8 md:flex-row md:justify-between">
+          <div className="max-w-sm text-[0.95rem] leading-relaxed md:text-base">
+            <p>{a.p1}</p>
+            <p className="mt-6">{a.p2}</p>
+            <a href="#services" className="mt-6 inline-block border-b border-current pb-0.5 text-sm">{a.link}</a>
+          </div>
+          <Image src={asset('/img/ceo-2.webp')} alt="Harbor founder" width={768} height={794} className="aspect-[5/6] w-32 rounded-2xl object-cover md:w-[12.6rem]" />
         </Reveal>
       </div>
-      <Reveal effect="zoom" className="overflow-hidden rounded-3xl">
-        <Image src={asset('/img/ceo-2.webp')} alt="Harbor founder" width={768} height={794} className="w-full object-cover" />
-      </Reveal>
     </section>
   );
 }

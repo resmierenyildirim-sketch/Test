@@ -4,11 +4,13 @@
   --color-ink: #0b0b0c;
   --color-paper: #ffffff;
   --color-accent: #ff4a4b;
+  --color-sun: #ffb400;
+  --color-sky: #8cc8ff;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 html { scroll-behavior: smooth; }
-body { background: var(--color-paper); color: var(--color-ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+body { background: var(--color-paper); color: #1c1c1c; font-family: var(--font-sans); -webkit-font-smoothing: antialiased; letter-spacing: -0.01em; }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
@@ -83,4 +85,15 @@ html.lenis, html.lenis body { height: auto; }
   .hs-outer { height: auto !important; }
   .hs-sticky { position: static; height: auto; padding: 4rem 0; }
   .hs-track { overflow-x: auto; width: 100%; }
+}
+
+/* ---------- Kelime kelime dolan başlık (scroll'a bağlı) ---------- */
+@media (scripting: none) { [data-w] { opacity: 1 !important; } }
+
+/* ---------- Yorum destesi: hareketi azaltma tercihi ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .deck-outer { height: auto !important; }
+  .deck-sticky { position: static !important; height: auto !important; padding: 3rem 1rem; }
+  .deck-stack { display: flex !important; flex-direction: column; align-items: center; gap: 1rem; }
+  .deck-card { transform: none !important; }
 }

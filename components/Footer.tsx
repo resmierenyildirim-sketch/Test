@@ -1,11 +1,12 @@
 import type { CSSProperties } from 'react';
+import { brand, content } from '@/lib/content';
 import LineReveal from './LineReveal';
 
-const tags = [
-  { label: 'Say hello', href: 'mailto:hello@example.com', style: { left: '6%', top: '8%' }, rot: -8, delay: 0 },
-  { label: 'Let’s talk', href: 'mailto:hello@example.com', style: { right: '4%', top: '4%' }, rot: 7, delay: -2 },
-  { label: 'Start today', href: '#pricing', style: { left: '2%', bottom: '10%' }, rot: 6, delay: -4 },
-  { label: 'Call us', href: 'tel:+10000000000', style: { right: '8%', bottom: '6%' }, rot: -6, delay: -6 },
+const tagPos = [
+  { left: '6%', top: '8%', rot: -8, delay: 0, href: 'mailto:hello@example.com' },
+  { right: '4%', top: '4%', rot: 7, delay: -2, href: 'mailto:hello@example.com' },
+  { left: '2%', bottom: '10%', rot: 6, delay: -4, href: '#pricing' },
+  { right: '8%', bottom: '6%', rot: -6, delay: -6, href: 'tel:+10000000000' },
 ];
 
 const socials = [
@@ -15,25 +16,29 @@ const socials = [
 ];
 
 export default function Footer() {
+  const f = content.footer;
   return (
-    <footer id="contact" className="overflow-hidden bg-white text-black">
-      <div className="animated-gradient-soft relative mx-auto flex min-h-[26rem] max-w-7xl items-center justify-center px-6 py-20 md:min-h-[32rem]">
-        {tags.map((t) => (
-          <a
-            key={t.label}
-            href={t.href}
-            className="tag-float absolute rounded-full bg-neutral-200 px-4 py-2 text-xs shadow-sm md:text-sm"
-            style={{ ...t.style, '--r': `${t.rot}deg`, animationDelay: `${t.delay}s` } as unknown as CSSProperties}
-          >
-            {t.label}
-          </a>
-        ))}
-        <a href="mailto:hello@example.com" className="relative block max-w-2xl text-center">
-          <LineReveal as="p" text="Want to get started? Click here to book a meeting." className="text-2xl font-light leading-snug md:text-5xl" />
+    <footer id="contact" className="overflow-hidden bg-white text-[#1c1c1c]">
+      <div className="animated-gradient-soft relative mx-auto flex min-h-[26rem] items-center justify-center px-6 py-20 md:min-h-[36rem]">
+        {f.tags.map((label, i) => {
+          const { rot, delay, href, ...pos } = tagPos[i];
+          return (
+            <a
+              key={label}
+              href={href}
+              className="tag-float absolute rounded-full bg-neutral-200 px-4 py-2 text-xs shadow-sm md:px-6 md:py-3 md:text-base"
+              style={{ ...pos, '--r': `${rot}deg`, animationDelay: `${delay}s` } as unknown as CSSProperties}
+            >
+              {label}
+            </a>
+          );
+        })}
+        <a href="mailto:hello@example.com" className="relative block max-w-3xl text-center">
+          <LineReveal as="p" text={f.cta} className="text-2xl font-light leading-snug tracking-[-0.02em] md:text-[2.75rem]" />
         </a>
       </div>
 
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-6 text-sm md:px-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 px-4 py-6 text-sm md:px-10">
         <nav className="flex gap-5" aria-label="Footer">
           <a href="#about">About</a><a href="#services">Services</a><a href="#pricing">Pricing</a>
         </nav>
@@ -43,10 +48,10 @@ export default function Footer() {
               <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={s.path} /></svg>
             </a>
           ))}
-          <span className="opacity-60">© {new Date().getFullYear()} Harbor</span>
+          <span className="opacity-60">© {new Date().getFullYear()} {brand}</span>
         </div>
       </div>
-      <p className="-mb-[3.5vw] select-none px-2 text-center text-[27vw] font-medium leading-[0.85] tracking-tighter md:text-[22vw]" aria-hidden="true">Harbor</p>
+      <p className="-mb-[3.5vw] select-none px-2 text-center text-[27vw] font-medium leading-[0.85] tracking-tighter md:text-[22vw]" aria-hidden="true">{brand}</p>
     </footer>
   );
 }
