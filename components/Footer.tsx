@@ -1,9 +1,16 @@
+import Button from './Button';
+import LineReveal from './LineReveal';
+
 export default function Footer() {
   return (
     <footer id="contact" className="bg-black text-white">
-      <div className="mx-auto max-w-7xl px-6 py-24">
-        <p className="text-2xl">Want to get started? Click here to book a meeting.</p>
-        <a href="mailto:hello@example.com" className="mt-8 inline-block rounded-full bg-white px-8 py-4 font-medium text-black hover:bg-accent hover:text-white">Book a meeting</a>
+      <div className="animated-gradient">
+        <div className="mx-auto max-w-7xl px-6 py-28">
+          <LineReveal as="p" className="max-w-3xl text-4xl font-semibold leading-tight sm:text-6xl" text="Want to get started? Click here to book a meeting." />
+          <Button href="mailto:hello@example.com" variant="light" className="mt-10">Book a meeting</Button>
+        </div>
+      </div>
+      <div className="mx-auto max-w-7xl px-6 pb-24">
         <div className="mt-20 grid gap-8 border-t border-white/20 pt-10 sm:grid-cols-4">
           <div><p className="eyebrow">Say hello</p><a href="mailto:hello@example.com">Let’s talk</a></div>
           <div><p className="eyebrow">Start today</p><a href="tel:+10000000000">Call us</a></div>
