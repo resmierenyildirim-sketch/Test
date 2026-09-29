@@ -1,12 +1,15 @@
 // Sitedeki tüm metinler ve veri burada. Kendi markanı ve içeriğini bu dosyadan değiştir.
 export const brand = 'Harbor';
 
+// Bütün "Book a call / Contact" bağlantıları iletişim sayfasına gider.
+export const contactHref = '/contact/';
+
 export const nav = [
   { href: '#about', label: 'About' },
   { href: '#services', label: 'Services' },
   { href: '#testimonials', label: 'Testimonials' },
   { href: '#pricing', label: 'Pricing' },
-  { href: '#contact', label: 'Contact' },
+  { href: contactHref, label: 'Contact' },
 ];
 
 export const content = {
@@ -95,10 +98,38 @@ export const content = {
   },
   cta: {
     text: 'Ready to talk? Book a meeting and let’s look at your numbers together.',
-    href: 'mailto:hello@example.com',
+    href: contactHref,
     // Fare imlecini takip eden etiketler (masaüstünde bölümün üzerinde gezinince belirir).
     trail: ['Say hello', 'Let’s talk', 'Start today', 'Call us'],
     trailColors: ['#ff4a4b', '#ffa628', '#8ccbff'],
+  },
+  contact: {
+    title: 'How can we support you?',
+    interestsLabel: 'I’m interested In',
+    interests: ['Financial Planning', 'Fundraising', 'Acquisitions', 'Advisory'],
+    fields: {
+      firstName: { label: 'First Name', placeholder: 'First Name' },
+      lastName: { label: 'Last Name', placeholder: 'Last Name' },
+      email: { label: 'Email', placeholder: 'Email Address' },
+      phone: { label: 'Phone Number', placeholder: 'Phone Number' },
+      message: { label: 'Your Message', placeholder: 'Your Message' },
+    },
+    submit: 'Get Started',
+    sending: 'Sending…',
+    altPrefix: 'Prefer email?',
+    altLink: 'Get in touch',
+    email: 'hello@example.com',
+    required: 'This field is required',
+    invalidEmail: 'This field must contain a valid email',
+    success: 'Thank you for your message. We will get in touch with you shortly.',
+    successMailto: 'Your email app should open with your message ready to send. If it does not, write to us at',
+    failure: 'Something went wrong. Please try again or email us directly.',
+    // Formu gerçekten göndermek için bir form servisi adresi ver (ör. Formspree: https://formspree.io/f/xxxx)
+    // ve .env dosyasına NEXT_PUBLIC_CONTACT_ENDPOINT olarak yaz. Boşsa e-posta uygulaması açılır (mailto).
+    endpoint: process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ?? '',
+    quote: 'They cut through the noise and gave us a plan the whole leadership team could get behind.',
+    name: 'Priya Nair',
+    role: 'COO, Northwind Studio',
   },
   footer: {
     links: [

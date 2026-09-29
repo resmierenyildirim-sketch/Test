@@ -1,5 +1,5 @@
 import { asset } from '@/lib/asset';
-import { content } from '@/lib/content';
+import { contactHref, content } from '@/lib/content';
 import Button from './Button';
 import LineReveal from './LineReveal';
 
@@ -34,7 +34,7 @@ export default function Pricing() {
             </div>
             <p className="plan-desc t-body">{plan.text}</p>
             <p className="plan-price">{plan.price}<small>{p.period}</small></p>
-            <Button href="#contact" tone="dark" full>{p.cta}</Button>
+            <Button href={contactHref} tone="dark" full>{p.cta}</Button>
             <div className="plan-inc t-body">
               <p>{p.includes}</p>
               <ul>{plan.features.map((f) => <li key={f}>{f}</li>)}</ul>
