@@ -2,41 +2,37 @@ import Image from 'next/image';
 import { asset } from '@/lib/asset';
 import { content } from '@/lib/content';
 import Button from './Button';
-import LineReveal from './LineReveal';
-import Reveal from './Reveal';
-import TopTicker from './TopTicker';
+import FitText from './FitText';
+import HeroBg from './HeroBg';
 
 export default function Hero() {
   const h = content.hero;
   return (
-    <section id="top" className="relative flex min-h-svh flex-col justify-end overflow-hidden bg-black text-white">
-      <div className="hero-bg absolute inset-0">
-        <Image src={asset('/img/mountains-harbor.webp')} alt="" fill priority sizes="100vw" className="hero-zoom object-cover object-[68%_center] opacity-95 md:object-center" />
+    <section id="top" className="hero" data-hdr="light">
+      <HeroBg />
+      <div className="hero-title">
+        <FitText as="h1" letters delay={250}>{h.title}</FitText>
       </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-black/20" />
-      <TopTicker />
-      <div className="hero-content relative w-full px-4 md:px-10">
-        <LineReveal
-          as="h1"
-          text={h.title}
-          className="whitespace-nowrap text-[12.9vw] font-normal leading-[1] tracking-[-0.03em] md:text-[14.4vw]"
-          delay={200}
-        />
-        <div className="mt-4 border-t border-white/25 md:mt-6 md:grid md:grid-cols-2">
-          <Reveal delay={800} className="flex items-start justify-between gap-6 py-4 md:py-8 md:pr-10">
-            <div className="flex items-center gap-4 rounded-2xl bg-black/35 p-3 backdrop-blur-md md:rounded-3xl md:p-3.5">
-              <Image src={asset('/img/shaurya-kauhsish-w9Ae-0Gap9I.webp')} alt="Harbor advisor" width={120} height={120} className="size-16 rounded-xl object-cover md:size-28 md:rounded-2xl" />
-              <div>
-                <p className="max-w-[16rem] text-sm font-normal leading-snug md:text-xl">{h.card}</p>
-                <Button href="#contact" variant="light" arrow className="mt-2 md:mt-3">{h.cta}</Button>
-              </div>
+      <div className="hero-row">
+        <div className="hero-left">
+          <div className="hero-card">
+            <Image src={asset('/img/shaurya-kauhsish-w9Ae-0Gap9I.webp')} alt="Harbor advisor" width={800} height={800} priority />
+            <div className="hero-card-body">
+              <p>{h.card}</p>
+              <Button href="#contact">{h.cta}</Button>
             </div>
-            <p className="hidden pt-1 text-sm md:block">{h.label}</p>
-          </Reveal>
-          <Reveal delay={1000} className="hidden items-start justify-between gap-6 border-l border-white/25 py-8 pl-10 md:flex">
-            <p className="max-w-xs text-xl font-normal leading-snug">{h.tagline}</p>
-            <a href="#about" aria-label="Scroll down" className="text-2xl leading-none">↓</a>
-          </Reveal>
+          </div>
+          <p className="hero-label">{h.label}</p>
+        </div>
+        <div className="hero-right">
+          <p className="t-lg" style={{ flex: 1 }}>{h.tagline}</p>
+          <a href="#about" className="hero-next" aria-label="Scroll to next section">
+            {[0, 1].map((i) => (
+              <svg key={i} viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M13.0001 1.99974L11.0002 1.9996L11.0002 18.1715L7.05044 14.2218L5.63623 15.636L12.0002 22L18.3642 15.636L16.9499 14.2218L13.0002 18.1716L13.0001 1.99974Z" />
+              </svg>
+            ))}
+          </a>
         </div>
       </div>
     </section>
