@@ -107,16 +107,16 @@ html.lenis, html.lenis body { height: auto; }
   [data-fx="lines"] .rv-mask { display: inline-block; overflow: hidden; vertical-align: top; }
   .rv-in {
     display: inline-block;
-    transition: transform 1.2s var(--ease-1) calc(var(--d, 0) * 1ms + var(--i) * 40ms),
-                opacity 1.2s var(--ease-1) calc(var(--d, 0) * 1ms + var(--i) * 40ms),
-                filter 1.2s var(--ease-1) calc(var(--d, 0) * 1ms + var(--i) * 40ms);
+    transition: transform 1.2s var(--ease-1) calc(var(--d, 0) * 1ms + var(--i) * var(--st, 40ms)),
+                opacity 1.2s var(--ease-1) calc(var(--d, 0) * 1ms + var(--i) * var(--st, 40ms)),
+                filter 1.2s var(--ease-1) calc(var(--d, 0) * 1ms + var(--i) * var(--st, 40ms));
   }
   [data-fx="lines"]:not([data-in]) .rv-in { transform: translateY(105%); }
   [data-fx="blur-bottom"]:not([data-in]) .rv-in { filter: blur(10px); opacity: 0; transform: translateY(0.25em); }
   [data-fx="letters"] .rv-in {
-    transition: transform 1.2s var(--ease-1) calc(var(--d, 0) * 1ms + var(--i) * 60ms),
-                opacity 1.2s var(--ease-1) calc(var(--d, 0) * 1ms + var(--i) * 60ms),
-                filter 1.2s var(--ease-1) calc(var(--d, 0) * 1ms + var(--i) * 60ms);
+    transition: transform 1.2s var(--ease-1) calc(var(--d, 0) * 1ms + var(--i) * var(--st, 27ms)),
+                opacity 1.2s var(--ease-1) calc(var(--d, 0) * 1ms + var(--i) * var(--st, 27ms)),
+                filter 1.2s var(--ease-1) calc(var(--d, 0) * 1ms + var(--i) * var(--st, 27ms));
   }
   [data-fx="letters"]:not([data-in]) .rv-in { filter: blur(10px); opacity: 0; transform: translateY(-0.25em); }
 

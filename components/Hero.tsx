@@ -11,7 +11,7 @@ export default function Hero() {
     <section id="top" className="hero" data-hdr="light">
       <HeroBg />
       <div className="hero-title">
-        <FitText as="h1" letters delay={250}>{h.title}</FitText>
+        <FitText as="h1" letters>{h.title}</FitText>
       </div>
       <div className="hero-row">
         <div className="hero-left">
