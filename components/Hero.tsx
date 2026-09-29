@@ -19,7 +19,7 @@ export default function Hero() {
         <LineReveal
           as="h1"
           text={h.title}
-          className="whitespace-nowrap text-[11vw] font-normal leading-[1] tracking-[-0.045em] md:text-[12vw]"
+          className="whitespace-nowrap text-[11.6vw] font-normal leading-[1] tracking-[-0.045em] md:text-[13.4vw]"
           delay={200}
         />
         <div className="mt-4 border-t border-white/25 md:mt-6 md:grid md:grid-cols-2">
