@@ -62,15 +62,21 @@ html.lenis, html.lenis body { height: auto; }
 .tr-btn:hover .tr-line, .tr-btn:focus-visible .tr-line { transform: translateY(-100%); }
 @media (prefers-reduced-motion: reduce) { .tr-line { transition: none; } }
 
-/* ---------- Hareketli gradient ---------- */
-.animated-gradient {
-  background: linear-gradient(115deg, #0b0b0c 0%, #0b0b0c 30%, #ff4a4b 55%, #0b0b0c 80%, #0b0b0c 100%);
+/* ---------- Hareketli gradient (footer CTA) ---------- */
+.animated-gradient-soft {
+  background: linear-gradient(115deg, #ffffff 0%, #ffffff 35%, #ffdcdc 55%, #ffffff 80%, #ffffff 100%);
   background-size: 300% 300%;
 }
 @media (prefers-reduced-motion: no-preference) {
-  .animated-gradient { animation: gradientShift 14s ease-in-out infinite alternate; }
+  .animated-gradient-soft { animation: gradientShift 14s ease-in-out infinite alternate; }
+  .tag-float { animation: tagFloat 9s ease-in-out infinite; }
 }
+.tag-float { transform: rotate(var(--r, 0deg)); }
 @keyframes gradientShift { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+@keyframes tagFloat {
+  0%, 100% { transform: translate(0, 0) rotate(var(--r, 0deg)); }
+  50% { transform: translate(10px, -14px) rotate(calc(var(--r, 0deg) * -0.6)); }
+}
 
 /* ---------- Yatay kaydırma: hareketi azaltma tercihi ---------- */
 @media (prefers-reduced-motion: reduce) {

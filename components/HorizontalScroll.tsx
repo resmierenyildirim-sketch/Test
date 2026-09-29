@@ -3,15 +3,8 @@
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { asset } from '@/lib/asset';
+import { panels } from '@/lib/panels';
 
-const panels = [
-  { title: 'Smarter Decisions, Faster', img: '/img/team-photo.webp',
-    text: 'Turn complex numbers into clear strategies. Access actionable insights that help you make confident business moves without hesitation.' },
-  { title: 'Growth That Stays on Course', img: '/img/office.webp',
-    text: 'Track performance against your goals in real time. Keep every department aligned and ensure your company grows with purpose.' },
-  { title: 'Opportunities Before They Surface', img: '/img/working.webp',
-    text: 'Uncover market shifts and financial signals early. Stay ahead of risks and seize advantages before your competitors even notice.' },
-];
 
 // Dikey kaydırmayı yatay harekete çevirir (sticky + scroll ilerlemesi).
 export default function HorizontalScroll() {
@@ -37,13 +30,12 @@ export default function HorizontalScroll() {
   }, []);
 
   return (
-    <section ref={outer} className="hs-outer relative bg-neutral-950 text-white" style={{ height: '320vh' }}>
+    <section ref={outer} className="hs-outer relative hidden bg-neutral-950 text-white md:block" style={{ height: '320vh' }}>
       <div className="hs-sticky sticky top-0 flex h-screen items-center overflow-hidden">
         <div ref={track} className="hs-track flex w-max items-stretch gap-5 px-6 will-change-transform md:px-[7.5vw]">
-          <div className="relative flex h-[70vh] w-[85vw] shrink-0 flex-col justify-end overflow-hidden rounded-2xl p-8 md:w-[40vw] md:p-12">
-            <Image src={asset('/img/uriel-xtgONQzGgOE.webp')} alt="" fill sizes="40vw" className="object-cover" />
-            <div className="absolute inset-0 bg-black/30" />
-            <h2 className="relative text-5xl font-semibold leading-none tracking-tight md:text-7xl">Built for clarity</h2>
+          <div className="relative flex h-[70vh] w-[85vw] shrink-0 flex-col justify-end overflow-hidden rounded-2xl bg-gradient-to-br from-neutral-800 via-neutral-900 to-black p-8 md:w-[40vw] md:p-12">
+            <div className="absolute -right-24 -top-24 size-96 rounded-full bg-accent/30 blur-3xl" />
+            <h2 className="relative text-5xl font-light leading-none tracking-tight md:text-7xl">Built for clarity</h2>
           </div>
           {panels.map((p) => (
             <article key={p.title} className="flex h-[70vh] w-[85vw] shrink-0 flex-col overflow-hidden rounded-2xl bg-neutral-900 md:w-[40vw]">
@@ -51,7 +43,7 @@ export default function HorizontalScroll() {
                 <Image src={asset(p.img)} alt="" fill sizes="(min-width:768px) 40vw, 85vw" className="object-cover" />
               </div>
               <div className="p-8">
-                <h3 className="text-2xl font-semibold">{p.title}</h3>
+                <h3 className="text-2xl font-normal">{p.title}</h3>
                 <p className="mt-3 opacity-70">{p.text}</p>
               </div>
             </article>
