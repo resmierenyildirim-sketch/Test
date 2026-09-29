@@ -19,10 +19,14 @@ export default function ScrollFill({ text, className, as = 'h2' }: Props) {
       return;
     }
     let raf = 0;
+    // İlerleme, içinde bulunduğu bölümün sabitlenme süresine göre hesaplanır.
+    const scope = el.closest('section') ?? el;
     const update = () => {
       raf = 0;
       const vh = window.innerHeight;
-      const p = Math.min(1, Math.max(0, (vh * 0.9 - el.getBoundingClientRect().top) / (vh * 0.55)));
+      const box = scope.getBoundingClientRect();
+      const span = Math.max(1, box.height - vh);
+      const p = Math.min(1, Math.max(0, (-box.top + vh * 0.1) / span));
       spans.forEach((s, i) => {
         s.style.opacity = String(0.3 + 0.7 * Math.min(1, Math.max(0, p * spans.length - i)));
       });

@@ -4,24 +4,32 @@ import { content } from '@/lib/content';
 import Reveal from './Reveal';
 import ScrollFill from './ScrollFill';
 
+// Gökyüzü arka planlı, ekrana sabitlenen bölüm: başlık kaydırdıkça kelime kelime dolar.
 export default function Stats() {
   const s = content.stats;
   return (
-    <section className="relative flex min-h-[110svh] flex-col justify-between overflow-hidden text-white">
+    <section className="relative overflow-clip text-white">
       <Image src={asset('/img/uriel-xtgONQzGgOE.webp')} alt="" fill sizes="100vw" className="object-cover" />
-      <div className="absolute inset-0 bg-black/10" />
-      <div className="relative px-4 pt-20 md:px-10 md:pt-28">
-        <ScrollFill text={s.lead} className="max-w-[88rem] text-[2.1rem] font-light leading-[1.12] tracking-[-0.03em] md:text-[5.2vw]" />
-      </div>
-      <div className="relative px-4 pb-12 pt-24 md:px-10 md:pb-16">
-        <div className="grid grid-cols-2 gap-x-6 gap-y-12 border-t border-white/30 pt-6 md:grid-cols-3 md:gap-x-10">
-          {s.items.map((it, i) => (
-            <Reveal key={it.label} delay={i * 140}>
-              <span className="inline-block rounded-full bg-white/25 px-4 py-1 text-sm backdrop-blur-sm">{it.label}</span>
-              <p className="mt-8 text-5xl font-light tracking-[-0.04em] md:text-[6.5vw] md:leading-none">{it.value}</p>
-              <p className="mt-5 max-w-[16rem] text-sm md:text-base">{it.text}</p>
-            </Reveal>
-          ))}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0b3a78]/25 via-transparent to-black/10" />
+      <div className="stats-outer relative h-[190svh]">
+        <div className="stats-sticky sticky top-0 flex h-svh flex-col justify-between px-4 pb-10 pt-[16vh] md:px-10 md:pb-14">
+          <ScrollFill
+            text={s.lead}
+            className="max-w-[88rem] text-[2.1rem] font-light leading-[1.22] tracking-[-0.03em] md:text-[4.7vw]"
+          />
+          <div className="border-t border-white/30 pt-6">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 md:gap-x-10">
+              {s.items.map((it, i) => (
+                <Reveal key={it.label} delay={i * 140}>
+                  <span className="inline-block rounded-full bg-white/20 px-5 py-2 text-sm backdrop-blur-sm md:text-lg">{it.label}</span>
+                  <div className="mt-6 flex flex-col gap-3 md:mt-10 md:flex-row md:items-end md:gap-6">
+                    <p className="text-5xl font-light leading-none tracking-[-0.04em] md:text-[3.4vw]">{it.value}</p>
+                    <p className="max-w-[15rem] text-sm leading-snug md:pb-1 md:text-lg">{it.text}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

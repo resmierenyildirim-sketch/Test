@@ -10,12 +10,12 @@ export default function Points() {
     <section className="px-4 pb-20 pt-6 md:px-10 md:pb-32 md:pt-28">
       <LineReveal as="p" text={b.lead} className="max-w-[92rem] text-[1.7rem] font-light leading-[1.25] tracking-[-0.02em] md:text-[2.75rem]" />
       <div className="mt-10 grid gap-10 md:mt-20 md:grid-cols-2">
-        <div className="flex h-[72vw] gap-2.5 md:h-[37rem]">
-          <div className="relative w-[62%] overflow-hidden rounded-2xl">
-            <Image src={asset('/img/team-photo.webp')} alt="The Harbor team" fill sizes="(min-width:768px) 30vw, 60vw" className="object-cover" />
+        <div className="flex items-end justify-between gap-[1.5%] md:max-w-[54rem]">
+          <div className="relative aspect-[3/4] w-[65.5%] overflow-hidden rounded-2xl">
+            <Image src={asset('/img/team-photo.webp')} alt="The Harbor team" fill sizes="(min-width:768px) 32vw, 65vw" className="object-cover" />
           </div>
-          <div className="relative w-[38%] overflow-hidden rounded-2xl">
-            <Image src={asset('/img/office.webp')} alt="Harbor office" fill sizes="(min-width:768px) 20vw, 40vw" className="object-cover" />
+          <div className="relative aspect-[3/4] w-[33%] overflow-hidden rounded-2xl">
+            <Image src={asset('/img/office.webp')} alt="Harbor office" fill sizes="(min-width:768px) 16vw, 33vw" className="object-cover" />
           </div>
         </div>
         <div className="flex flex-col justify-end gap-8 md:pl-[14vw]">

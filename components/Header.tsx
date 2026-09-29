@@ -13,9 +13,19 @@ const links = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [solid, setSolid] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
+  // Aşağı kaydırırken gizlenir, yukarı kaydırırken geri gelir.
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > window.innerHeight * 0.8);
+    let last = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setSolid(y > window.innerHeight * 0.8);
+      if (y < 80) setHidden(false);
+      else if (y > last + 6) setHidden(true);
+      else if (y < last - 6) setHidden(false);
+      last = y;
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -29,9 +39,9 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 z-40 transition-all duration-500 ${
-          solid ? 'top-0 bg-white/80 text-black backdrop-blur-md' : 'top-14 text-white'
-        }`}
+        className={`fixed inset-x-0 z-40 transition-[transform,color,top] duration-500 ease-[cubic-bezier(.2,.7,.2,1)] ${
+          solid ? 'top-0 text-[#1c1c1c]' : 'top-14 text-white'
+        } ${hidden ? '-translate-y-[220%]' : 'translate-y-0'}`}
       >
         <div className="mx-auto flex items-center justify-between px-4 py-3 md:px-10 md:py-4">
           <a href="#top" className="text-xl font-semibold tracking-tight md:text-[1.35rem]">Harbor</a>
